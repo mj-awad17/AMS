@@ -467,5 +467,3 @@ python manage.py collectstatic
 
 ---
 
-**Built with ❤️ for MSc Research Project**
-**Accommodation Management System - 2025**

@@ -21,7 +21,7 @@ SECRET_KEY = env('SECRET_KEY', default='django-insecure-change-this-in-productio
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=True)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1', '.vercel.app', '.now.sh'])
 
 # Application definition
 INSTALLED_APPS = [
@@ -146,4 +146,10 @@ AUTH_USER_MODEL = 'accommodation.User'
 LOGIN_URL = '/auth/login/'
 LOGIN_REDIRECT_URL = '/accommodations/'
 LOGOUT_REDIRECT_URL = '/'
+
+# CSRF trusted origins for Vercel
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.vercel.app',
+    'https://*.now.sh',
+]
 
