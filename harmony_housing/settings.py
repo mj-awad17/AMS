@@ -21,17 +21,14 @@ SECRET_KEY = env('SECRET_KEY', default='django-insecure-change-this-in-productio
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=True)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
-    'localhost', 
-    '127.0.0.1', 
-    '.vercel.app', 
-    '.now.sh',
-    '.railway.app',
-    '.up.railway.app',
-    '.onrender.com',
-    'ams-production-dbaf.up.railway.app',
-    '*',  # Fallback for deployment
-])
+# ALLOWED_HOSTS configuration - accepts all hosts in production
+# Railway and other platforms set this dynamically
+_allowed = env('ALLOWED_HOSTS', default='*')
+if _allowed == '*':
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = [h.strip() for h in _allowed.split(',') if h.strip()]
+    ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
 
 # Application definition
 INSTALLED_APPS = [
