@@ -29,6 +29,8 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
     '.railway.app',
     '.up.railway.app',
     '.onrender.com',
+    'ams-production-dbaf.up.railway.app',
+    '*',  # Fallback for deployment
 ])
 
 # Application definition
